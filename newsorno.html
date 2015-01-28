@@ -1,0 +1,44 @@
+<head>
+  <title>newsorno</title>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			{{> loginButtons}}
+		</div>
+
+		{{#if currentUser }}
+			{{> showArticle}}
+		{{else}}
+			{{> notLoggedIn}}
+		{{/if}}
+	</div>
+
+
+
+</body>
+
+<template name="notLoggedIn">
+	<h1>Welcome to Boston.com's Most Exciting Game: Straight News or Topspin</h1>
+	<h3>Your job is to go through article headlines and decide, is it Straight News or Not Straight News. Please create an account using the widget above. Then you'll be able to get started. Thanks. </h3>
+</template>
+
+
+<template name="showArticle">
+	<div class="col-xs-12 center-all sep-from-top">
+	  {{#if userIsJay }}
+	  	<a href="#" id="clearSelections">Clear Selectiions DB</a>
+	  {{/if}}
+
+	  <p class="news-or-no">Straight News or Topspin? You Decide.</p>
+		{{#each currentArticle}}
+			<p>{{currentCount}}/{{totalCount}}</p>
+			<p class="articleTitle">{{title}}</p>
+			<button id="isNews">Straight News</button> <button id="notNews">Not Straight News</button><br>
+		{{/each}}
+	</div>
+
+
+</template>
